@@ -1,0 +1,25 @@
+{
+  "name": "football-results-scraper",
+  "version": "1.0.0",
+  "description": "NodeJS web scraper for Premier League football results",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kris-bond/football-results-scraper.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kris-bond/football-results-scraper/issues"
+  },
+  "homepage": "https://github.com/kris-bond/football-results-scraper#readme",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.1",
+    "nodemon": "^2.0.19"
+  }
+}
