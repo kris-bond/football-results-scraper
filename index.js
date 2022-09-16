@@ -41,19 +41,27 @@ urls.forEach(url => {
             // });
 
             //console.log(season, names, results)
-            console.log(names)
+            //console.log(names)
 
             // output to json
             const json = JSON.stringify(season, names, results);
 
-            // var fs = require('fs');
-            // fs.readFile('data.json',function(err,json){
-            //     if(err) throw err;
-            //     //var parseJson = JSON.parse(content);
-            //     fs.writeFile('data.json',JSON.stringify(json),function(err){
-            //         if(err) throw err;
-            //     })
-            // })
+            //console.log(json);
+
+            var fs = require('fs');
+            fs.readFile('data.json',function(err,json){
+                if(err) throw err;
+                //var parseJson = JSON.parse(content);
+                fs.appendFile('data.json',JSON.stringify(season),function(err){
+                    if(err) throw err;
+                })
+                fs.appendFile('data.json',JSON.stringify(names),function(err){
+                    if(err) throw err;
+                })
+                fs.appendFile('data.json',JSON.stringify(results),function(err){
+                    if(err) throw err;
+                })
+            })
             
         })
 
