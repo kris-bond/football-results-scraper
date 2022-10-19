@@ -40,6 +40,7 @@ urls.forEach(url => {
                     let endStr = data.lastIndexOf("]")-1
                     
                     fullName = data.substring(startStr, endStr);
+                    fullName = fullName.replace("&amp;", "&") // fix for & in name
 
                     let name = {
                         "code": shortName,
@@ -85,30 +86,18 @@ urls.forEach(url => {
 
             });
 
-            console.log(names);
-
-            console.log(games);
-
-            //TODO update names
-
+            names.forEach(name => {
+                let short = name.code;
+                let full = name.name;
+                games = JSON.parse(
+                    JSON.stringify(games).replaceAll(short,full)
+                )
+            })
             
+            console.log(games);
             
         })
 
 })
-
-class game {
-    constructor(match, result) {
-        this.match = match;
-        this.result = result;
-    }
-}
-
-class teamName {
-    constructor(shortName, fullName) {
-        this.shortName = shortName;
-        this.fullName = fullName;
-    }
-}
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
