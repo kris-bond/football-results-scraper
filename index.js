@@ -12,6 +12,9 @@ const url22to23 = 'https://en.wikipedia.org/w/index.php?title=2022%E2%80%9323_Pr
 
 urls.push(url21to22, url22to23);
 
+let names = [];
+let games = [];
+
 urls.forEach(url => {
 
     axios(url)
@@ -20,9 +23,6 @@ urls.forEach(url => {
 
             //formatting for year from url
             season = url.substring(43, 47) + "/" + url.substring(56, 58);
-
-            let names = [];
-            let games = [];
 
             html.split('\n').forEach(function(data) {
 
@@ -94,10 +94,17 @@ urls.forEach(url => {
                 )
             })
             
-            console.log(games);
+            // console.log(games);
+            // console.log(names);
             
         })
 
 })
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+
+app.get('/games', (req, res) => {
+
+    res.status(200).send({games})
+        
+});
