@@ -4,7 +4,8 @@
   "description": "NodeJS web scraper for Premier League football results",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon index.js",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,10 @@
     "axios": "^0.27.2",
     "cheerio": "^1.0.0-rc.12",
     "express": "^4.18.1",
-    "nodemon": "^2.0.19"
+    "nodemon": "^2.0.19",
+    "webpack": "^5.74.0"
+  },
+  "devDependencies": {
+    "webpack-cli": "^4.10.0"
   }
 }

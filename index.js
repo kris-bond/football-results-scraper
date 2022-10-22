@@ -89,12 +89,15 @@ urls.forEach(url => {
             names.forEach(name => {
                 let short = name.code;
                 let full = name.name;
+                let regex = new RegExp(short, "g");
                 games = JSON.parse(
-                    JSON.stringify(games).replaceAll(short,full)
+                    // JSON.stringify(games).replaceAll(short,full)
+                    JSON.stringify(games).replace(regex,full)
+
                 )
             })
             
-            // console.log(games);
+            console.log(games);
             // console.log(names);
             
         })
