@@ -5,17 +5,21 @@ const express = require('express');
 
 const app = express();
 
-const urls = [];
+// const urls = [];
 
 const url21to22 = 'https://en.wikipedia.org/w/index.php?title=2021%E2%80%9322_Premier_League&action=edit';
 const url22to23 = 'https://en.wikipedia.org/w/index.php?title=2022%E2%80%9323_Premier_League&action=edit';
 
-urls.push(url21to22, url22to23);
+// urls.push(url21to22, url22to23);
 
 let names = [];
 let games = [];
 
-urls.forEach(url => {
+function getData(url){
+
+    if(url == "2021/22"){url = "https://en.wikipedia.org/w/index.php?title=2021%E2%80%9322_Premier_League&action=edit"}
+    if(url == "2022/23"){url = "https://en.wikipedia.org/w/index.php?title=2022%E2%80%9323_Premier_League&action=edit"}
+
 
     axios(url)
         .then(response => {
@@ -91,23 +95,34 @@ urls.forEach(url => {
                 let full = name.name;
                 let regex = new RegExp(short, "g");
                 games = JSON.parse(
-                    // JSON.stringify(games).replaceAll(short,full)
                     JSON.stringify(games).replace(regex,full)
 
                 )
             })
             
-            console.log(games);
+            // console.log(games);
             // console.log(names);
             
         })
+    
+    return games;
 
-})
+}
+
+
 
 app.listen(PORT, () => console.log(`listening on port ${PORT}`));
 
 app.get('/games', (req, res) => {
 
-    res.status(200).send({games})
+    const sns = req.query.sns;
+    results = getData(sns);
+    res.status(200).send({results})
+        
+});
+
+app.get('/names', (req, res) => {
+
+    res.status(200).send({names})
         
 });
