@@ -173,8 +173,6 @@ axios('https://en.wikipedia.org/w/index.php?title=2022%E2%80%9323_Premier_League
             )
         })
 
-        console.log(names)
-        
     })
 
 
